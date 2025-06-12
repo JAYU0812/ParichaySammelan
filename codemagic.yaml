@@ -1,33 +1,37 @@
 workflows:
-  cordova-android-build:
-    name: Cordova Android Build
+  cordova-ios-build:
+    name: Cordova iOS Build
     environment:
+      xcode: latest
+      node: 18
       vars:
-        BUNDLE_ID: "com.yourcompany.parichayapp"  # Replace with your actual package name
-      node: 18.16.0
+        BUNDLE_ID: "com.yourcompany.parichayapp"
     scripts:
       - name: Install Cordova
         script: |
           npm install -g cordova
 
-      - name: Clean Existing Android Platform (optional)
+      - name: Clean Existing iOS Platform (optional but recommended)
         script: |
-          if [ -d "platforms/android" ]; then
-            cordova platform remove android
+          if [ -d "platforms/ios" ]; then
+            cordova platform remove ios
           fi
 
-      - name: Add Android Platform
+      - name: Install cordova-ios explicitly
         script: |
-          cordova platform add android
+          npm install cordova-ios@latest
+
+      - name: Add iOS Platform
+        script: |
+          cordova platform add ios
 
       - name: Prepare Cordova App
         script: |
-          cordova prepare android
+          cordova prepare ios
 
-      - name: Build Android App (Release)
+      - name: Build Cordova App
         script: |
-          cordova build android --release
+          cordova build ios --release
 
     artifacts:
-      - platforms/android/app/build/outputs/**/*.apk
-      - platforms/android/app/build/outputs/**/*.aab
+      - platforms/ios/build/**/*.ipa
