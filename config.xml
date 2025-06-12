@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.ParichaySammelan" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ParichaySammelan</name>
+    <description>SHRI BRAHMAN SWARNKAR SAMAJ SAMUHIK VIVAH YUVA PRACHAR SAMITI KHEDBRAHMA</description>
+    <author email="jay13soni@gmail.com" href="https://parichay-sammelan.wuaze.com">Jay soni!!</author>
+
+    <content src="https://parichay-sammelan.wuaze.com" />
+
+    <allow-navigation href="https://parichay-sammelan.wuaze.com/*" />
+    <access origin="https://parichay-sammelan.wuaze.com/*" />
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <platform name="android">
+    <icon src="res/android/icon-36-hdpi.png" density="hdpi" />
+    <icon src="res/android/icon-48-mdpi.png" density="mdpi" />
+    <icon src="res/android/icon-72-xhdpi.png" density="xhdpi" />
+    <icon src="res/android/icon-96-xxhdpi.png" density="xxhdpi" />
+    <icon src="res/android/icon-144-xxxhdpi.png" density="xxxhdpi" />
+</platform>
+
+<platform name="ios">
+    <icon src="res/ios/icon-60.png" width="60" height="60" />
+    <icon src="res/ios/icon-76.png" width="76" height="76" />
+    <icon src="res/ios/icon-120.png" width="120" height="120" />
+    <!-- Add more iOS icon sizes here -->
+</platform>
+
+
+</widget>

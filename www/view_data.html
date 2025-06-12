@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>View Data</title>
+<link rel="stylesheet" href="style.css" />
+<script>
+window.onload = () => {
+  fetch('admin_api.php?action=read')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.createElement('div');
+    container.className = 'tile-container';
+    data.forEach(user => {
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      tile.innerHTML = `
+        <img src="uploads/${user.photo}" class="tile-photo" />
+        <h3>${user.name}</h3>
+        <p>Gautra: ${user.father_gautra}</p>
+      `;
+      tile.onclick = () => {
+        alert(JSON.stringify(user, null, 2));
+      };
+      container.appendChild(tile);
+    });
+    document.body.appendChild(container);
+  });
+};
+</script>
+<style>
+.tile-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.tile { border: 1px solid #ccc; border-radius: 8px; padding: 10px; width: 200px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+.tile:hover { transform: scale(1.05); }
+.tile-photo { width: 100%; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>View Data</h1>
+</body>
+</html>
