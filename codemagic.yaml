@@ -1,0 +1,22 @@
+workflows:
+  cordova-ios-build:
+    name: Cordova iOS Build
+    environment:
+      xcode: latest
+      vars:
+        BUNDLE_ID: "com.example.yourapp" # ← Change this
+    scripts:
+      - name: Install Cordova
+        script: |
+          npm install -g cordova
+      - name: Add iOS Platform
+        script: |
+          cordova platform add ios
+      - name: Prepare Cordova App
+        script: |
+          cordova prepare ios
+      - name: Build Cordova App
+        script: |
+          cordova build ios --release
+    artifacts:
+      - platforms/ios/build/**/*.ipa
