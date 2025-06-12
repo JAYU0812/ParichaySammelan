@@ -4,19 +4,30 @@ workflows:
     environment:
       xcode: latest
       vars:
-        BUNDLE_ID: "com.example.yourapp" # ← Change this
+        BUNDLE_ID: "com.yourcompany.parichayapp"  # ← Replace with your actual Bundle ID
     scripts:
       - name: Install Cordova
         script: |
           npm install -g cordova
+
+      # ⚠️ Remove iOS if it already exists (prevents platform conflict)
+      - name: Clean Existing iOS Platform (optional but recommended)
+        script: |
+          if [ -d "platforms/ios" ]; then
+            cordova platform remove ios
+          fi
+
       - name: Add iOS Platform
         script: |
           cordova platform add ios
+
       - name: Prepare Cordova App
         script: |
           cordova prepare ios
+
       - name: Build Cordova App
         script: |
           cordova build ios --release
+
     artifacts:
       - platforms/ios/build/**/*.ipa
